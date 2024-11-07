@@ -7,7 +7,7 @@ import api from './src/services';
 
 export default function cep() {
   const [cep, setCep] = useState('') // Const para o botão Limpar.
-  const inputRef = useRef (null)
+  const inputRef = useRef(null)
 
   function limpar() {
     setCep('')
@@ -22,7 +22,7 @@ export default function cep() {
           placeholder='EX: 790233942'
           value={cep}
           onChangeText={(textoDigitado) => setCep(textoDigitado)}
-          keyboardType='number-pad'
+          keyboardType='numeric'
           ref={inputRef}
         />
       </View>
@@ -35,7 +35,7 @@ export default function cep() {
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.btn, { backgroundColor: '#cd3e1d' }]}
-          onPress={limpar}
+        onPress={limpar}
         >
           <Text style={styles.btnText}>Limpar</Text>
         </TouchableOpacity>
