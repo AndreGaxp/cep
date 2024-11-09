@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Text, View, TextInput, TouchableOpacity, SafeAreaView, StyleSheet, Keyboard } from 'react-native';
 
 // Import API de CEP
-import api from './src/services';
+import api from './src/services/api';
 
 
 export default function cep() {
@@ -19,7 +19,7 @@ export default function cep() {
     }
 
     try {
-      const response = await api.get(`/%{cep}/json`)
+      const response = await api.get(`/${cep}/json`)
       console.log(response.data)
       setCepUser(response.data)
       Keyboard.dismiss(); //Fechar o teclado sozinho.
