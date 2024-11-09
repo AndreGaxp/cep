@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Text, View, TextInput, TouchableOpacity, SafeAreaView, StyleSheet } from 'react-native';
 
 // Import API de CEP
@@ -8,6 +8,25 @@ import api from './src/services';
 export default function cep() {
   const [cep, setCep] = useState('') // Const para o botão Limpar.
   const inputRef = useRef(null)
+
+
+  async function buscar() {
+    if (cep == '') {
+      alert('CEP Invalido');
+      setCep('')
+      return;
+    }
+
+    try {
+      const response = await api.get(`/%{cep}/json`)
+      console.log(response.data)
+
+    } catch (error) {
+      console.log('ERROR: ' + error)
+    }
+
+  }
+
 
   function limpar() {
     setCep('')
@@ -30,12 +49,13 @@ export default function cep() {
       <View style={styles.areaBtn}>
         <TouchableOpacity
           style={[styles.btn, { backgroundColor: '#1d45cd' }]}
+          onPress={buscar}
         >
           <Text style={styles.btnText}>Buscar</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.btn, { backgroundColor: '#cd3e1d' }]}
-        onPress={limpar}
+          onPress={limpar}
         >
           <Text style={styles.btnText}>Limpar</Text>
         </TouchableOpacity>
