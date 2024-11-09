@@ -64,16 +64,19 @@ export default function cep() {
         </TouchableOpacity>
       </View>
 
+     
+        {cepUser &&
 
-      {cepUser &&
-        <View style={styles.resultado}>
-          <Text style={styles.itemText}>CEP: {cepUser.cep}</Text>
-          <Text style={styles.itemText}>Logradouro: {cepUser.logradouro}</Text>
-          <Text style={styles.itemText}>Bairro: {cepUser.bairro}</Text>
-          <Text style={styles.itemText}>Cidade: {cepUser.localidade}</Text>
-          <Text style={styles.itemText}>Estado: {cepUser.uf}</Text>
-        </View>
-      }
+          <View style={styles.resultado}>
+            <Text style={styles.itemText}>CEP: {cepUser.cep}</Text>
+            <Text style={styles.itemText}>Logradouro: {cepUser.logradouro}</Text>
+            <Text style={styles.itemText}>Bairro: {cepUser.bairro}</Text>
+            <Text style={styles.itemText}>Cidade: {cepUser.localidade}</Text>
+            <Text style={styles.itemText}>Estado: {cepUser.uf}</Text>
+          </View>
+
+        }
+
 
     </SafeAreaView>
   );
@@ -122,13 +125,19 @@ const styles = StyleSheet.create({
 
   btnText: {
     fontSize: 22,
-    color: '#fff'
+    color: '#fff',
+    marginBottom: 5,
   },
 
   resultado: {
-    flex: 1,
+    width: '80%',
+    height: '30%',
+    alignSelf: 'center',
+    marginTop: 50,
     justifyContent: 'center',
     alignItems: 'center',
+    borderWidth: 2,
+    borderRadius: 8,
   },
 
   itemText: {
