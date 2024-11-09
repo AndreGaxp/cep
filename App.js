@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Text, View, TextInput, TouchableOpacity, SafeAreaView, StyleSheet } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, SafeAreaView, StyleSheet, Keyboard } from 'react-native';
 
 // Import API de CEP
 import api from './src/services';
@@ -7,6 +7,7 @@ import api from './src/services';
 
 export default function cep() {
   const [cep, setCep] = useState('') // Const para o botão Limpar.
+  const [cepUser, setCepUser] = useState(null)
   const inputRef = useRef(null)
 
 
@@ -20,6 +21,8 @@ export default function cep() {
     try {
       const response = await api.get(`/%{cep}/json`)
       console.log(response.data)
+      setCepUser(response.data)
+      Keyboard.dismiss(); //Fechar o teclado sozinho.
 
     } catch (error) {
       console.log('ERROR: ' + error)
@@ -61,13 +64,17 @@ export default function cep() {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.resultado}>
-        <Text style={styles.itemText}>CEP: 87897309</Text>
-        <Text style={styles.itemText}>Logradouro: 87897309</Text>
-        <Text style={styles.itemText}>Bairro: 87897309</Text>
-        <Text style={styles.itemText}>Cidade: 87897309</Text>
-        <Text style={styles.itemText}>Estado: 87897309</Text>
-      </View>
+
+      {cepUser &&
+        <View style={styles.resultado}>
+          <Text style={styles.itemText}>CEP: {cepUser.cep}</Text>
+          <Text style={styles.itemText}>Logradouro: {cepUser.logradouro}</Text>
+          <Text style={styles.itemText}>Bairro: {cepUser.bairro}</Text>
+          <Text style={styles.itemText}>Cidade: {cepUser.localidade}</Text>
+          <Text style={styles.itemText}>Estado: {cepUser.uf}</Text>
+        </View>
+      }
+
     </SafeAreaView>
   );
 }
