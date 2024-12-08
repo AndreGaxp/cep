@@ -1,7 +1,7 @@
 <h1>📱  - App de Controle Financeiro <br></h1>
 Este projeto é uma aplicação em React Native que utiliza uma API de CEP para buscar informações detalhadas do endereço a partir de um número de CEP fornecido pelo usuário.
 
-<h1>📋 Funcionalidades</h1>
+<h1>📋 - Funcionalidades</h1>
 - Busca de Endereço: <br>
 O usuário pode digitar um CEP no campo de busca para consultar informações como:
 Logradouro.
@@ -11,7 +11,7 @@ Estado.
 
 - Limpeza do Campo: <br> Botão para limpar o campo de entrada e redefinir os resultados exibidos.
 
-<h1>🛠️ Tecnologias Utilizadas</h1>
+<h1>🛠️ - Tecnologias Utilizadas</h1>
 - React Native: <br 
 Base para o desenvolvimento do aplicativo.
 Axios: <br>
@@ -21,7 +21,7 @@ Responsável por fornecer os dados de endereço (utilizando /src/services/api).
 React Hooks: <br>
 Gerenciamento de estado com useState e manipulação de referências com useRef.
 
-<h1>🖼️ Interface</h1>
+<h1>🖼️ - Interface</h1>
 <table>
   <tr>
     <td align="center">
